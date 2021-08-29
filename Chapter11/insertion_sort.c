@@ -8,8 +8,7 @@
 int a[LEN] = {10, 5, 2, 4, 7};
 
 void insertion_sort(void) {
-    int i, j, key;
-    for (j = 1; j < LEN; j++) {
+    for (int i, j = 1, key; j < LEN; j++) {
         printf("%d, %d, %d, %d, %d\n", a[0], a[1], a[2], a[3], a[4]);
         key = a[j];
         i = j - 1;
