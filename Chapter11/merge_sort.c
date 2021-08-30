@@ -6,7 +6,11 @@ int a[LEN] = {5, 2, 4, 7, 1, 3, 2, 6};
 void merge(int start, int mid, int end) {
     int n1 = mid - start + 1;
     int n2 = end - mid;
-    int left[n1], right[n2];
+    /**
+     * https://www.zhihu.com/question/367672681
+     * https://akaedu.github.io/book/ch08s01.html
+     */
+    int left[n1], right[n2];            //
 
     for (int i = 0; i < n1; i++)        // left holds a[start..mid]
         left[i] = a[start + i];
@@ -27,9 +31,8 @@ void merge(int start, int mid, int end) {
 }
 
 void sort(int start, int end) {
-    int mid;
     if (start < end) {
-        mid = (start + end) / 2;
+        int mid = (start + end) / 2;
         printf("sort (%d-%d, %d-%d) %d %d %d %d %d %d %d %d\n",
                start, mid, mid + 1, end,
                a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7]);
