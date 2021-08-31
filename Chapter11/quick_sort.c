@@ -30,9 +30,22 @@ int partition(int start, int end) {
     return index - 1;
 }
 
+int partition_overload(int start, int end) {
+    int pivot = start;
+
+    while (start < end) {
+        // 每次改变start/end之后, 都需要重新判定start < end
+        while (a[pivot] <= a[end] && start < end)end--;
+        while (a[start] <= a[pivot] && start < end)start++;
+        if (start < end) swap(start, end);
+    }
+    swap(pivot, end);
+    return end;
+}
+
 void quickSort(int start, int end) {
     if (start < end) {
-        int mid = partition(start, end);
+        int mid = partition_overload(start, end);
         printf("partition (%d-%d, mid=%d) %d %d %d %d %d %d %d %d\n",
                start, end, mid,
                a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7]);
