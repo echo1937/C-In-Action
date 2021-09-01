@@ -1,3 +1,8 @@
+//
+// Created on 2021/8/31.
+// Page 142 课后习题
+//
+
 #include <stdio.h>
 
 #define LEN 8
