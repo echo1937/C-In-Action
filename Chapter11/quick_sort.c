@@ -9,7 +9,7 @@ void swap(int n1, int n2) {
     a[n2] = tmp;
 }
 
-int partition(int start, int end) {
+int partition_left(int start, int end) {
     /**
      * pivot表示选择的基准点, 从最左侧开始
      * index表示保存点, 从(基准点+1)开始
@@ -22,7 +22,7 @@ int partition(int start, int end) {
          * 当前点如果小于基准点, 当前点和保存点交换元素, 保存点前移(如果当前点就是保存点, 则实际无变化)
          */
         if (a[i] < a[pivot]) {
-            swap(i, index);
+            swap(index, i);
             index++;
         }
     }
@@ -30,7 +30,7 @@ int partition(int start, int end) {
     return index - 1;
 }
 
-int partition_overload(int start, int end) {
+int partition_right(int start, int end) {
     int pivot = start;
 
     while (start < end) {
@@ -45,7 +45,7 @@ int partition_overload(int start, int end) {
 
 void quickSort(int start, int end) {
     if (start < end) {
-        int mid = partition_overload(start, end);
+        int mid = partition_right(start, end);
         printf("partition (%d-%d, mid=%d) %d %d %d %d %d %d %d %d\n",
                start, end, mid,
                a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7]);
