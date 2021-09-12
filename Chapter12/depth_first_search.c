@@ -32,10 +32,13 @@ struct point predecessor[MAX_ROW][MAX_COL] = {
 
 void push(struct point p) {
     stack[top++] = p;
+    printf("执行出栈操作, push stack[%d]=(%d-%d) => top=%d\n", top - 1, p.row, p.col, top);
 }
 
 struct point pop(void) {
-    return stack[--top];
+    struct point p = stack[--top];
+    printf("执行入栈操作, pop stack[%d]=(%d-%d) => top=%d\n", top, p.row, p.col, top);
+    return p;
 }
 
 int is_empty(void) {
@@ -61,10 +64,22 @@ void print_maze(void) {
 }
 
 void visit(int row, int col, struct point pre) {
+    printf("visit (%d-%d) => ", row, col);
     struct point visit_point = {row, col};
     push(visit_point);              // stack压栈
     maze[row][col] = 2;             // 迷宫路线保存
     predecessor[row][col] = pre;    // 前任位置保存
+}
+
+void print_stack() {
+    printf("循环开始\n-- stack打印开始\n");
+    for (int i = 0; i < 512; ++i) {
+        struct point point = stack[i];
+        if (point.row != 0 || point.col != 0) {
+            printf("stack[%d] is (%d, %d)\n", i, point.row, point.col);
+        }
+    }
+    printf("-- stack打印完毕\n");
 }
 
 int main(void) {
@@ -76,6 +91,7 @@ int main(void) {
     maze[p.row][p.col] = 2;
 
     while (!is_empty()) {
+//        print_stack();
         p = pop();
         /* goal */
         if (p.row == MAX_ROW - 1 && p.col == MAX_COL - 1)break;
