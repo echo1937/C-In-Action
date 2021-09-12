@@ -14,6 +14,21 @@ struct point {
 } stack[512];
 int top = 0;
 
+void push(struct point p) {
+    stack[top++] = p;
+//    printf("执行出栈操作, push stack[%d]=(%d-%d) => top=%d\n", top - 1, p.row, p.col, top);
+}
+
+struct point pop(void) {
+    struct point p = stack[--top];
+//    printf("执行入栈操作, pop stack[%d]=(%d-%d) => top=%d\n", top, p.row, p.col, top);
+    return p;
+}
+
+int is_empty(void) {
+    return top == 0;
+}
+
 int maze[MAX_ROW][MAX_COL] = {
         0, 1, 0, 0, 0,
         0, 1, 0, 1, 0,
@@ -21,6 +36,15 @@ int maze[MAX_ROW][MAX_COL] = {
         0, 1, 1, 1, 0,
         0, 0, 0, 1, 0,
 };
+
+void print_maze(void) {
+    for (int i = 0; i < MAX_ROW; i++) {
+        for (int j = 0; j < MAX_COL; j++)
+            printf("%d ", maze[i][j]);
+        putchar('\n');
+    }
+    printf("*********\n");
+}
 
 struct point predecessor[MAX_ROW][MAX_COL] = {
         {{-1, -1}, {-1, -1}, {-1, -1}, {-1, -1}, {-1, -1}},
@@ -30,21 +54,6 @@ struct point predecessor[MAX_ROW][MAX_COL] = {
         {{-1, -1}, {-1, -1}, {-1, -1}, {-1, -1}, {-1, -1}},
 };
 
-void push(struct point p) {
-    stack[top++] = p;
-    printf("执行出栈操作, push stack[%d]=(%d-%d) => top=%d\n", top - 1, p.row, p.col, top);
-}
-
-struct point pop(void) {
-    struct point p = stack[--top];
-    printf("执行入栈操作, pop stack[%d]=(%d-%d) => top=%d\n", top, p.row, p.col, top);
-    return p;
-}
-
-int is_empty(void) {
-    return top == 0;
-}
-
 void print_predecessor(struct point p) {
     printf("(%d, %d)\n", p.row, p.col);
     while (predecessor[p.row][p.col].row != -1) {
@@ -53,18 +62,8 @@ void print_predecessor(struct point p) {
     }
 }
 
-void print_maze(void) {
-    int i, j;
-    for (i = 0; i < MAX_ROW; i++) {
-        for (j = 0; j < MAX_COL; j++)
-            printf("%d ", maze[i][j]);
-        putchar('\n');
-    }
-    printf("*********\n");
-}
-
 void visit(int row, int col, struct point pre) {
-    printf("visit (%d-%d) => ", row, col);
+//    printf("visit (%d-%d) => ", row, col);
     struct point visit_point = {row, col};
     push(visit_point);              // stack压栈
     maze[row][col] = 2;             // 迷宫路线保存
