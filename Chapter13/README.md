@@ -7,7 +7,7 @@
 - 补码 [two's complement](https://zh.wikipedia.org/wiki/%E4%BA%8C%E8%A3%9C%E6%95%B8)
 - 移码 [offset binary，excess-N](https://zh.wikipedia.org/wiki/%E7%A7%BB%E7%A0%81)
 
-### [补数](https://zh.wikipedia.org/wiki/%E8%A1%A5%E6%95%B0) (十进制)
+## [补数](https://zh.wikipedia.org/wiki/%E8%A1%A5%E6%95%B0) (十进制)
 - 9's Complement
   - 负数用9的补码表示
     - 负数-m的补码等于(10的n次方 - 1 - m)，n表示m的位数
@@ -30,7 +30,7 @@
 
 - 补充: [9's and 10's Complement](https://www.javatpoint.com/9s-and-10s-complement-in-digital-electronics)
 
-### [有符号数处理](https://zh.wikipedia.org/wiki/%E6%9C%89%E7%AC%A6%E8%99%9F%E6%95%B8%E8%99%95%E7%90%86) （二进制）
+## [有符号数处理](https://zh.wikipedia.org/wiki/%E6%9C%89%E7%AC%A6%E8%99%9F%E6%95%B8%E8%99%95%E7%90%86) （二进制）
 - 1's Complement
   - 负数用1的补码表示
     - 负数-m的补码等于（2的n次方 - 1 - m），n表示数据类型的位数
